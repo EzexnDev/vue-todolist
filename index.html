@@ -34,14 +34,14 @@
 </head>
 
 <body>
-    <div id="root">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
+    <div class="container margin-top" id="root">
+        <div class="col">
+            <div class="row d-flex justify-content-center m-4">
                 <div class="col-6 ">
                     <img id="logo" src="img/logo.png" alt="">
                 </div>
             </div>
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-center m-4">
                 <div class="col-6">
                     <input class="form-control" type="text" placeholder="Nuovo Todo" name="todo" v-model="inputUser">
                 </div>
@@ -51,15 +51,16 @@
                 </div>
             </div>
             <div class="col">
-                <div class="container todoListContainer">
-                    <ul class="listaTodo">
+                <div class="container todoListContainer m-4">
+                    <ul class="listaTodo p-4">
                         <li v-for="(el,index) in toDostuff">
-                            <div class="row justify-content-space-between">
-                                <div class="col-11">
-                                    <p>{{el}}</p>
+                            <div class="row d-flex justify-content-space-between" @click="changeBackgroundColor(index)" v-bind:style="{'background-color':el.color}">
+                                <div class="col-11 align-self-center">
+                                    <p>{{el.text}}</p>
                                 </div>
-                                <div class="col-1"><i class="fa fa-minus-square fa-1x" @click="removeToDo(index)" aria-hidden="true"></i></div>
+                                <div class="col-1 align-self-center"><i class="fa fa-times fa-1x" @click="removeToDo(index)" aria-hidden="true"></i></div>
                             </div>
+                            <hr>
                         </li>
                     </ul>
                 </div>
